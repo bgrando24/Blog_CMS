@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "NMi75kLKykb24RIjAVvN04sAAfr3uZTh0hP/aSlCvxE=",
+  "Source": "ASP.NET_REST_API",
+  "BasePath": "_content/ASP.NET_REST_API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
