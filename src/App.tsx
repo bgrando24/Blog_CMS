@@ -6,8 +6,9 @@ import { Home } from './pages/home/home';
 import { Blog } from './pages/blog/Blog';
 import { Navbar } from './shared/Navbar';
 import { About } from './pages/about/About';
+import { Footer } from './shared/Footer';
 
-function App() {
+export function App() {
   return (
     <>
 
@@ -23,8 +24,10 @@ function App() {
         </Routes>
       </Router>
 
+      <Footer />
+
     </>
   );
 }
 
-export default App;
+
