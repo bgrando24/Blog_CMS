@@ -1,12 +1,13 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+
+import { Home } from './pages/home/home';
 
 function App() {
   return (
     <div className="App">
       
-      <div className=' font-bold flex justify-center'>Test</div>
+      <Home />
 
     </div>
   );
