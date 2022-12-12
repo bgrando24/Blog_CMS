@@ -8,6 +8,7 @@ import { Navbar } from './shared/Navbar';
 import { About } from './pages/about/About';
 import { Footer } from './shared/Footer';
 import { HomeBanner } from './pages/home/components/HomeBanner';
+import { ArticleView } from './pages/article/ArticleView';
 
 export function App() {
   return (
@@ -29,6 +30,14 @@ export function App() {
             </>
           } 
         />
+
+        <Route
+          path="blog/:article"
+          element={
+            <ArticleView />
+          }
+        />
+
         <Route 
           path='/blog' 
           element={
@@ -38,6 +47,7 @@ export function App() {
             </>
           } 
         />
+
         <Route 
           path='/about' 
           element={

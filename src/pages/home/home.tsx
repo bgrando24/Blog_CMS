@@ -1,7 +1,5 @@
 
 import { Articles } from "../../FakeDatabase";
-import { ArticleSnippet } from "./components/ArticleSnippet";
-import { HomeBanner } from "./components/HomeBanner";
 import { LatestArticles } from "./components/LatestArticles";
 import { TrendingArticles } from "./components/TrendingArticles";
 

@@ -5,7 +5,8 @@ const SNIPPET_LENGTH: number = 50;
 
 
 // defines the type of each property of an Article object
-type ArticleType = {
+export type ArticleType = {
+    ID: string,
     Title: string,
     Content: string,
     Author: string,
@@ -13,7 +14,7 @@ type ArticleType = {
 }
 
 // tells typescript below to expect a property called 'article' that is of the type above
-interface ArticleProps {
+export interface ArticleProps {
     article: ArticleType
 }
 
@@ -24,8 +25,9 @@ export const ArticleSnippet: FC<ArticleProps> = ({ article }): JSX.Element => {
     let contentSnippet: string = ArticleContentSnippet(article.Content);
 
     return (
-        <div 
-        className=" flex flex-col items-center justify-between h-40 w-[335px] bg-blue-200 p-2 rounded-xl hover:bg-opacity-50 transition duration-150 ease-in-out cursor-pointer"
+        <a 
+            className=" flex flex-col items-center justify-between h-40 w-[335px] bg-blue-200 p-2 rounded-xl hover:bg-opacity-50 transition duration-150 ease-in-out"
+            href={"blog/" + article.ID}
         >
 
             <h3 className=" font-bold ">{article.Title}</h3>
@@ -33,7 +35,7 @@ export const ArticleSnippet: FC<ArticleProps> = ({ article }): JSX.Element => {
             <p className=" text-sm font-bold italic">By {article.Author}</p>
             <p className=" text-sm">{article.Date.toDateString()}</p>
             
-        </div>
+        </a>
     );
 }
 
