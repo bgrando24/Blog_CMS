@@ -7,19 +7,46 @@ import { Blog } from './pages/blog/Blog';
 import { Navbar } from './shared/Navbar';
 import { About } from './pages/about/About';
 import { Footer } from './shared/Footer';
+import { HomeBanner } from './pages/home/components/HomeBanner';
 
 export function App() {
   return (
     <>
 
-      <Navbar />
+
+      
 
       <Router>
         <Routes>
         
-        <Route path='/' element={<Home />} />
-        <Route path='/blog' element={<Blog />} />
-        <Route path='/about' element={<About />} />
+        <Route 
+          path='/' 
+          element={
+            <>
+              <HomeBanner />
+              <Navbar />
+              <Home />
+            </>
+          } 
+        />
+        <Route 
+          path='/blog' 
+          element={
+            <>
+              <Navbar />
+              <Blog />
+            </>
+          } 
+        />
+        <Route 
+          path='/about' 
+          element={
+            <>
+              <Navbar />
+              <About />
+            </>
+          } 
+        />
         
         </Routes>
       </Router>

@@ -25,7 +25,7 @@ export const ArticleSnippet: FC<ArticleProps> = ({ article }): JSX.Element => {
 
     return (
         <div 
-        className=" flex flex-col items-center justify-between h-40 w-52 bg-blue-200 p-2 rounded-xl hover:bg-opacity-50 transition duration-150 ease-in-out cursor-pointer"
+        className=" flex flex-col items-center justify-between h-40 w-[335px] bg-blue-200 p-2 rounded-xl hover:bg-opacity-50 transition duration-150 ease-in-out cursor-pointer"
         >
 
             <h3 className=" font-bold ">{article.Title}</h3>

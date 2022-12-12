@@ -12,12 +12,12 @@ export interface ArticlesProps {
     Articles: ArticlesType[]
 }
 
-// When backend is running, 
+// When backend is running, this will need to query articles based on newest date - maybe top 10?
 
 export const LatestArticles: FC<ArticlesProps> = ({Articles}): JSX.Element => {
 
     return (
-        <div className=" flex justify-center flex-wrap">
+        <div className=" flex justify-center flex-wrap mb-10">
             {
                 Articles.map( (article, i) => {
                     return (
