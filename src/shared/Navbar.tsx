@@ -7,7 +7,7 @@ const navitems = [
 
 export function Navbar() {
     return (
-        <div className=" flex justify-center h-12 bg-gray-400 sticky top-0">
+        <div className=" flex justify-center  h-12 bg-gray-400 sticky top-0">
 
             <div className=" flex justify-evenly w-full max-w-[1080px]">
                 {

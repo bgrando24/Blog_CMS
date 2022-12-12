@@ -1,7 +1,9 @@
 
 import { Articles } from "../../FakeDatabase";
 import { ArticleSnippet } from "./components/ArticleSnippet";
-import { LatestArticles } from "./components/LatestArticlesSection";
+import { HomeBanner } from "./components/HomeBanner";
+import { LatestArticles } from "./components/LatestArticles";
+import { TrendingArticles } from "./components/TrendingArticles";
 
 export function Home() {
     return (
@@ -11,7 +13,13 @@ export function Home() {
                 My Blog!
             </h1>
 
-            <div className=" py-5">
+            <div className=" py-10">
+                <span>Trending Articles</span>
+            </div>
+
+            <TrendingArticles Articles={Articles} />
+
+            <div className=" py-10">
                 <span>Latest Articles</span>
             </div>
 

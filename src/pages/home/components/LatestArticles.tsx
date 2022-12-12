@@ -1,16 +1,18 @@
 import { FC } from "react";
 import { ArticleSnippet } from "./ArticleSnippet";
 
-type ArticlesType = {
+export type ArticlesType = {
     Title: string,
     Content: string,
     Author: string,
     Date: Date
 }
 
-interface ArticlesProps {
+export interface ArticlesProps {
     Articles: ArticlesType[]
 }
+
+// When backend is running, 
 
 export const LatestArticles: FC<ArticlesProps> = ({Articles}): JSX.Element => {
 

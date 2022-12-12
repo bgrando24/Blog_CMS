@@ -1,12 +1,12 @@
 body {
   margin: 0;
   font-family: "Helvetica", sans-serif;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
   background-color: white;
 }
 
 html {
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
 }
 
 
