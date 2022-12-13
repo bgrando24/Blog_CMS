@@ -21,7 +21,7 @@ const bodyParser = require('body-parser');
                         // MIDDLEWARE SECTION //
 // #######################################################################
 app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: 'http://localhost:3000',    // Will need to change when in production
     methods: ["GET", "PUT", "POST", "DELETE", "HEAD", "OPTIONS"],
     credentials: true
 }));
@@ -70,6 +70,30 @@ app.get('/home-test', (req, res) => {
 });
 
 
+
+
+
+
+
+
+
+
+// #######################################################################
+                   // blog_posts TABLE ROUTES SECTION //
+// #######################################################################
+
+// display all posts
+app.get("/blog-posts", async (req, res) => {
+    try {
+
+        const allPosts = await pool.query(`SELECT * FROM blog_posts`);
+        res.json(allPosts.rows);
+        console.log("All posts queried");
+
+    } catch (e) {
+        console.error(e.message);
+    }
+});
 
 
 

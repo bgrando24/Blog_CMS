@@ -8,3 +8,15 @@ const pool = new Pool({
 });
 
 module.exports = pool;
+
+
+
+/*
+    table name: blog_posts
+        id SERIAL,
+        title TEXT,
+        content TEXT,
+        snippet VARCHAR(200),
+        author VARCHAR(200),
+        publish_date DATE
+*/
