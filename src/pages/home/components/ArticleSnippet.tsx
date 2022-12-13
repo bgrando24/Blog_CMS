@@ -33,7 +33,7 @@ export const ArticleSnippet: FC<ArticleProps> = ({ article }): JSX.Element => {
             <h3 className=" font-bold ">{article.Title}</h3>
             <p className=" text-sm text-center ">{contentSnippet}</p>
             <p className=" text-sm font-bold italic">By {article.Author}</p>
-            <p className=" text-sm">{article.Date.toDateString()}</p>
+            <p className=" text-sm">{article.Date.toLocaleDateString()}</p>
             
         </a>
     );

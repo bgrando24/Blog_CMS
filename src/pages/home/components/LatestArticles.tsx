@@ -22,8 +22,8 @@ export const LatestArticles: FC<ArticlesProps> = ({Articles}): JSX.Element => {
             {
                 Articles.map( (article, i) => {
                     return (
-                        <div className="m-2">
-                            <ArticleSnippet key={i} article={article} />
+                        <div className="m-2" key={i}>
+                            <ArticleSnippet  article={article} />
                         </div>
                     )
                     

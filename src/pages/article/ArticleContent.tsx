@@ -12,7 +12,7 @@ const QueryDatabaseForArticle = (Database: Array<ArticleType>, IDToFind: string)
 
 const queryString = window.location.pathname;
 const ArticleID = queryString[queryString.length-1];
-console.log("The article ID should be: " + ArticleID);
+// console.log("The article ID should be: " + ArticleID);
 
 
 const ArticleResult: Array<ArticleType> = QueryDatabaseForArticle(Articles, ArticleID);
