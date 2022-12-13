@@ -3,6 +3,7 @@ const navitems = [
     {name: "Home"   , path: "/"},
     {name: "Blog"   , path: "/blog"},
     {name: "About"  , path: "/about"},
+    {name: "Publish", path: "/publish"}
 ]
 
 export function Navbar() {

@@ -9,6 +9,8 @@ import { About } from './pages/about/About';
 import { Footer } from './shared/Footer';
 import { HomeBanner } from './pages/home/components/HomeBanner';
 import { ArticleView } from './pages/article/ArticleView';
+import { Publish } from './pages/publish/Publish';
+import { NewArticle } from './pages/publish/NewArticle';
 
 export function App() {
   return (
@@ -54,6 +56,26 @@ export function App() {
             <>
               <Navbar />
               <About />
+            </>
+          } 
+        />
+
+        <Route 
+          path='/publish' 
+          element={
+            <>
+              <Navbar />
+              <Publish />
+            </>
+          } 
+        />
+
+        <Route 
+          path='/publish/new-article' 
+          element={
+            <>
+              <Navbar />
+              <NewArticle />
             </>
           } 
         />
