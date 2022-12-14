@@ -1,16 +1,8 @@
 import { FC } from "react";
-import { ArticleSnippet } from "./ArticleSnippet";
-
-export type ArticlesType = {
-    ID: string
-    Title: string,
-    Content: string,
-    Author: string,
-    Date: Date
-}
+import { ArticleSnippet, ArticleType } from "../../../shared/ArticleSnippet";
 
 export interface ArticlesProps {
-    Articles: ArticlesType[]
+    Articles: ArticleType[]
 }
 
 // When backend is running, this will need to query articles based on newest date - maybe top 10?

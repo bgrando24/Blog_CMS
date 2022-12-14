@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { ArticleSnippet } from '../../shared/ArticleSnippet';
 import { ServerInfo } from '../../shared/ServerInfo';
 
 
@@ -50,10 +51,7 @@ export function Blog() {
                     {
                         allPosts.map( (post, i) => {
                             return (
-                                <div key={i} className="flex flex-col items-center border-black border-[1px] w-full py-1 px-2 m-1 rounded-sm">
-                                    <h3 className=' font-bold'>{post.title}</h3>
-                                    <p>{post.snippet}</p>
-                                </div>
+                                <ArticleSnippet article={post} />
                             )
                         })
                     }

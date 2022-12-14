@@ -1,41 +1,60 @@
-import { FC } from "react";
-import { Articles } from "../../FakeDatabase";
-import { ArticleType } from "../home/components/ArticleSnippet";
+import { FC, useState, useEffect } from "react";
+import { ArticleType } from "../../shared/ArticleSnippet";
+import { ServerInfo } from "../../shared/ServerInfo";
 
-
-// Note this fakes querying, it simply takes an array and finds the appropriate member
-const QueryDatabaseForArticle = (Database: Array<ArticleType>, IDToFind: string): Array<ArticleType>  => {
-    let filteredResult: Array<ArticleType> = Database.filter( article => article.ID === IDToFind);
-
-    return filteredResult;
-}
 
 const queryString = window.location.pathname;
 const ArticleID = queryString[queryString.length-1];
-// console.log("The article ID should be: " + ArticleID);
-
-
-const ArticleResult: Array<ArticleType> = QueryDatabaseForArticle(Articles, ArticleID);
 
 export const ArticleContent: FC = (): JSX.Element => {
 
+    const [Article, setArticle] = useState<ArticleType>({
+        id: "",
+        title: "",
+        content: "",
+        snippet: "",
+        author: "",
+        publish_date: new Date()
+    });
 
-    let Article = ArticleResult[0];
+
+    const getArticleById = async () => {
+        try {
+
+            const response = await fetch(`${ServerInfo.DEV_DOMAIN}/article/${ArticleID}`, {
+                method: "POST"
+            });
+
+            const responseJSON = await response.json();
+            setArticle(responseJSON);
+            console.log(`Article with id ${ArticleID} retrieved`);
+            console.log(responseJSON);
+
+        } catch (e: any) {
+            console.error(e.message);
+        }
+    }
+
+    useEffect(() => {
+        getArticleById();
+    }, []);
+
+    const dateStringToDate: Date = new Date(Article.publish_date);
 
     return (
         <div className=" flex flex-col items-center max-w-[1080px] mx-auto mb-20 px-5">
 
-            <h2 className=" text-3xl py-10 text-center">{Article.Title}</h2>
+            <h2 className=" text-3xl py-10 text-center">{Article.title}</h2>
 
             <div className=" flex flex-col">
                 {/* socials? */}
-                <h3 className=" text-center font-bold">{Article.Author}</h3>
+                <h3 className=" text-center font-bold">{Article.author}</h3>
                 <p className=" text-center">
-                    {`Published ${CalculateTimeSincePublished(Article.Date)} : `}
-                    <span className=" text-gray-500">{`${Article.Date.toDateString()}`}</span>
+                    {`Published ${CalculateTimeSincePublished(dateStringToDate)} : `}
+                    <span className=" text-gray-500">{`${dateStringToDate.toDateString()}`}</span>
                 </p>
 
-                <p className=" my-10"> {Article.Content} </p>
+                <p className=" my-10"> {Article.content} </p>
                 
             </div>
 

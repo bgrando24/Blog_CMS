@@ -1,9 +1,9 @@
 
-import { Articles } from "../../FakeDatabase";
 import { LatestArticles } from "./components/LatestArticles";
 import { TrendingArticles } from "./components/TrendingArticles";
 import { useEffect, useState } from 'react';
 import { ServerInfo } from "../../shared/ServerInfo";
+import { ArticleType } from "../../shared/ArticleSnippet";
 
 
 export function Home() {
@@ -26,8 +26,31 @@ export function Home() {
         }
     }
 
+
+    const [allPosts, setAllPosts] = useState<ArticleType[]>([]);
+
+
+    const GetAllPosts = async () => {
+        try {
+
+            const response = await fetch(`${ServerInfo.DEV_DOMAIN}/blog-posts`, {
+                method: "GET",
+            });
+
+            const responseJSON = await response.json();
+            setAllPosts(responseJSON);
+            console.log("All posts retrieved");
+            console.log(responseJSON);
+
+        } catch (e: any) {
+            console.error(e.message);
+        }
+    }
+
+
     useEffect(() => {
         CheckServerConnection();
+        GetAllPosts();
     }, []);
 
     return (
@@ -45,16 +68,13 @@ export function Home() {
                 <span>Trending Articles</span>
             </div>
 
-            <TrendingArticles Articles={Articles} />
+            <TrendingArticles Articles={allPosts} />
 
             <div className=" py-10">
                 <span>Latest Articles</span>
             </div>
 
-            <LatestArticles Articles={Articles} />
-
-
-            {/* <ArticleSnippet article={Articles[1]}/> */}
+            <LatestArticles Articles={allPosts} />
 
         </div>
     );
