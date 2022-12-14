@@ -1,11 +1,46 @@
 
+import { ServerInfo } from "../../shared/ServerInfo";
+
+type ResponseMessage = {
+    status: string
+}
+
 export const NewArticle = () => {
 
     const HandleNewArticleSubmit = (e: any) => {
         e.preventDefault();
+
+        PostNewArticle({
+            title: e.target.title.value, 
+            content: e.target.content.value,
+            snippet: e.target.snippet.value,
+            author: e.target.author.value,
+            publish_date: new Date()
+        });
+
         console.log("New article submitted");
-        console.log(e.target.title.value);
     }
+
+
+    const PostNewArticle = async (NewArticleObject: object) => {
+        // because it's async
+        try {   
+
+            const response = await fetch(`${ServerInfo.DEV_DOMAIN}/new-article`, {
+                method: "POST", // HTTP method
+                headers: {"Content-Type": "application/json"},  // the type of data sent
+                body: JSON.stringify(NewArticleObject)  // converts object to JSON
+            })
+
+            // checking it worked
+            let responseMessage: ResponseMessage = await response.json();
+            console.log(responseMessage.status);
+
+        } catch (e: any) {
+            console.error(e.message);
+        }
+    }
+
 
     return (
         <div className=" flex flex-col items-center py-10 text-xl max-w-[1080px] mx-auto">
@@ -42,7 +77,7 @@ export const NewArticle = () => {
                     id="author" 
                     name="author" 
                     type="text" 
-                    className="w-[50%] mb-5 bg-gray-100 shadow rounded-sm" 
+                    className="w-[50%] mb-5 bg-gray-100 shadow rounded-sm text-[1rem]" 
                 />
 
                 <button 

@@ -44,19 +44,21 @@ export function Blog() {
                 <h1>Categories</h1>
             </div>
 
-            <div className="py-10">
-                <h1>All Articles</h1>
+            <div>
+                <h1 className=' text-center mb-3'>All Articles</h1>
+                <div className="flex">
+                    {
+                        allPosts.map( (post, i) => {
+                            return (
+                                <div key={i} className="flex flex-col items-center border-black border-[1px] w-full py-1 px-2 m-1 rounded-sm">
+                                    <h3 className=' font-bold'>{post.title}</h3>
+                                    <p>{post.snippet}</p>
+                                </div>
+                            )
+                        })
+                    }
 
-                {
-                    allPosts.map( (post, i) => {
-                        return (
-                            <div key={i} className="py-5">
-                                {post.title}
-                            </div>
-                        )
-                    })
-                }
-
+                </div>
             </div>
 
         </div>
