@@ -69,6 +69,20 @@ app.get('/home-test', (req, res) => {
     res.json({ status: "ok", message: "Server connected"});
 });
 
+// testing post
+app.post('/test-post', async (req, res) => {
+    try {
+
+        const {title, example} = req.body;  // destructuring to extract object properties
+        console.log(`POST received: Title: ${title}, Example: ${example}`);
+        res.json({status: "ok"});
+
+    } catch (e) {
+        console.error(e.message);
+    }
+    
+});
+
 
 
 
@@ -93,6 +107,24 @@ app.get("/blog-posts", async (req, res) => {
     } catch (e) {
         console.error(e.message);
     }
+});
+
+
+// Post a new article to the database
+app.post('/new-article', async (req, res) => {
+    try {
+
+        const {title, content, snippet, author, publish_date} = req.body;  // destructuring to extract object properties
+        //console.log(`${title}, ${content}, ${snippet}, ${author}, ${publish_date}`);
+
+        const newArticle = await pool.query(`INSERT INTO blog_posts (title, content, snippet, author, publish_date) VALUES ('${title}', '${content}', '${snippet}', '${author}', '${publish_date}')`);
+
+        res.json({status: "ok"});
+
+    } catch (e) {
+        console.error(e.message);
+    }
+    
 });
 
 
