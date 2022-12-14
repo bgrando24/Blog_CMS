@@ -1,3 +1,3 @@
 export const ServerInfo = {
-    DEV_DOMAIN: "http://localhost:5000"
+    DEV_DOMAIN: "http://localhost:5001"
 }
