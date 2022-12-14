@@ -128,6 +128,19 @@ app.post('/new-article', async (req, res) => {
 });
 
 
+// get's an article by it's ID
+app.post('/article/:id', async (req, res) => {
+    try {
+
+        const articleQuery = await pool.query(`SELECT * FROM blog_posts WHERE id = '${req.params.id}'`);
+        res.json(articleQuery.rows[0]); //send the result back
+
+    } catch (e) {
+        console.error(e.message);
+    }
+});
+
+
 
 // launching the server -> apparently 5000 is in use by MacOS Monterey now
 app.listen(5001, () => {
