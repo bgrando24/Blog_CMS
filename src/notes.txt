@@ -1,0 +1,3 @@
+primary: #5928E5
+secondary: #FF0013
+accent: Black / #7B7484
