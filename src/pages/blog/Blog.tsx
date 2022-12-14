@@ -18,7 +18,7 @@ export function Blog() {
             const responseJSON = await response.json();
             setAllPosts(responseJSON);
             console.log("All posts retrieved");
-            console.log(responseJSON);
+            // console.log(responseJSON);
 
         } catch (e: any) {
             console.error(e.message);
@@ -27,7 +27,6 @@ export function Blog() {
 
     useEffect(() => {
         GetAllPosts();
-        console.log("GetAllPosts triggered");
     }, []);
 
 
@@ -47,11 +46,13 @@ export function Blog() {
 
             <div>
                 <h1 className=' text-center mb-3'>All Articles</h1>
-                <div className="flex">
+                <div className="flex flex-col">
                     {
                         allPosts.map( (post, i) => {
                             return (
-                                <ArticleSnippet article={post} />
+                                <div className='my-1' key={i}>
+                                    <ArticleSnippet article={post} />
+                                </div>
                             )
                         })
                     }

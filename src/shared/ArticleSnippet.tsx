@@ -25,7 +25,6 @@ export interface ArticleProps {
 export const ArticleSnippet: FC<ArticleProps> = ({ article }): JSX.Element => {
 
     const dateStringAsDate: Date = new Date(article.publish_date);
-    console.log(dateStringAsDate);
 
     return (
         <a 

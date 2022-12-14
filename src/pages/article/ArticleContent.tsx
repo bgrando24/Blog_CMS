@@ -28,7 +28,6 @@ export const ArticleContent: FC = (): JSX.Element => {
             const responseJSON = await response.json();
             setArticle(responseJSON);
             console.log(`Article with id ${ArticleID} retrieved`);
-            console.log(responseJSON);
 
         } catch (e: any) {
             console.error(e.message);
