@@ -8,6 +8,8 @@ import { ArticleType } from "../../shared/ArticleSnippet";
 
 export function Home() {
     const [serverStatus, setServerStatus] = useState("");
+    const [allPosts, setAllPosts] = useState<ArticleType[]>([]);
+    const [latestPosts, setLatestPosts] = useState<ArticleType[]>([]);
 
 
     const CheckServerConnection = async () => {
@@ -27,9 +29,6 @@ export function Home() {
     }
 
 
-    const [allPosts, setAllPosts] = useState<ArticleType[]>([]);
-
-
     const GetAllPosts = async () => {
         try {
 
@@ -39,8 +38,21 @@ export function Home() {
 
             const responseJSON = await response.json();
             setAllPosts(responseJSON);
-            console.log("All posts retrieved");
-            console.log(responseJSON);
+
+        } catch (e: any) {
+            console.error(e.message);
+        }
+    }
+
+    const GetLatestPosts = async () => {
+        try {
+
+            const response = await fetch(`${ServerInfo.DEV_DOMAIN}/latest-blog-posts`, {
+                method: "GET",
+            });
+
+            const responseJSON = await response.json();
+            setLatestPosts(responseJSON);
 
         } catch (e: any) {
             console.error(e.message);
@@ -51,6 +63,7 @@ export function Home() {
     useEffect(() => {
         CheckServerConnection();
         GetAllPosts();
+        GetLatestPosts();
     }, []);
 
     return (
@@ -60,21 +73,17 @@ export function Home() {
                 Server status: {serverStatus ? serverStatus : "Not found"}
             </p>
 
-            <h1 className="text-bold text-xl py-10">
-                My Blog!
-            </h1>
-
             <div className=" py-10">
-                <span>Trending Articles</span>
+                <h1 className=" text-lg">Trending Articles</h1>
             </div>
 
             <TrendingArticles Articles={allPosts} />
 
             <div className=" py-10">
-                <span>Latest Articles</span>
+                <h1 className=" text-lg">Latest Articles</h1>
             </div>
 
-            <LatestArticles Articles={allPosts} />
+            <LatestArticles Articles={latestPosts} />
 
         </div>
     );

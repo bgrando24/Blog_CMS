@@ -15,7 +15,7 @@ export function Navbar() {
                     navitems.map( (item, i) => {
                         return (
                             <a 
-                                className=" flex justify-center items-center w-[200px] hover:bg-white transition-all ease-in-out duration-500"
+                                className=" flex justify-center items-center w-[200px] hover:scale-105 hover:underline transition-all ease-in-out duration-300"
                                 href={item.path}
                                 key={i}
                                 >

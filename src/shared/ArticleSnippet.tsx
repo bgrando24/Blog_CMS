@@ -1,8 +1,7 @@
-import { FC, useEffect, useState } from "react";
-import { ServerInfo } from "./ServerInfo";
+import { FC } from "react";
 
 // the length in characters an article snippet should be
-const SNIPPET_LENGTH: number = 50;
+// const SNIPPET_LENGTH: number = 50;
 
 
 // defines the type of each property of an Article object
@@ -42,10 +41,10 @@ export const ArticleSnippet: FC<ArticleProps> = ({ article }): JSX.Element => {
 }
 
 
-function ArticleContentSnippet(content: string) {
-    if (content.length > SNIPPET_LENGTH) {
-        return content.substring(0, SNIPPET_LENGTH) + "...";
-    }
+// function ArticleContentSnippet(content: string) {
+//     if (content.length > SNIPPET_LENGTH) {
+//         return content.substring(0, SNIPPET_LENGTH) + "...";
+//     }
 
-    return content;
-}
+//     return content;
+// }

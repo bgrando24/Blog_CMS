@@ -7,10 +7,9 @@ type ResponseMessage = {
 
 export const NewArticle = () => {
 
-    const HandleNewArticleSubmit = (e: any) => {
-        e.preventDefault();
+    const HandleNewArticleSubmit = async (e: any) => {
 
-        PostNewArticle({
+        await PostNewArticle({
             title: e.target.title.value, 
             content: e.target.content.value,
             snippet: e.target.snippet.value,
