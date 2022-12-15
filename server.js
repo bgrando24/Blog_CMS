@@ -96,13 +96,27 @@ app.post('/test-post', async (req, res) => {
                    // blog_posts TABLE ROUTES SECTION //
 // #######################################################################
 
-// display all posts
+// GET all posts
 app.get("/blog-posts", async (req, res) => {
     try {
 
         const allPosts = await pool.query(`SELECT * FROM blog_posts`);
         res.json(allPosts.rows);
         console.log("All posts queried");
+
+    } catch (e) {
+        console.error(e.message);
+    }
+});
+
+
+// GET all posts ORDERED BY DATE descending (newest to oldest)
+app.get("/latest-blog-posts", async (req, res) => {
+    try {
+
+        const allPosts = await pool.query(`SELECT * FROM blog_posts ORDER BY publish_date DESC`);
+        res.json(allPosts.rows);
+        console.log("All posts descending queried");
 
     } catch (e) {
         console.error(e.message);
