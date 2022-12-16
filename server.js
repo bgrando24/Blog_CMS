@@ -158,11 +158,10 @@ app.post('/article/:id', async (req, res) => {
 // delete an article (row) by id
 app.delete('/delete/:id', async (req, res) => {
     try {
-
+        console.log("Received DELETE request for article ID " + req.params.id);
         const deleteResponse = await pool.query(`DELETE FROM blog_posts WHERE id = '${req.params.id}'`);
         const query = await pool.query(`SELECT * FROM blog_posts`);
-
-        res.json(query.rows[0]);
+        res.json(query.rows);
 
     } catch (e) {
         console.error(e.message);
