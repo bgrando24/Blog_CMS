@@ -155,6 +155,31 @@ app.post('/article/:id', async (req, res) => {
 });
 
 
+// delete an article (row) by id
+app.delete('/delete/:id', async (req, res) => {
+    try {
+
+        const deleteResponse = await pool.query(`DELETE FROM blog_posts WHERE id = '${req.params.id}'`);
+        const query = await pool.query(`SELECT * FROM blog_posts`);
+
+        res.json(query.rows[0]);
+
+    } catch (e) {
+        console.error(e.message);
+    }
+})
+
+
+
+
+
+
+
+
+
+
+
+
 
 // launching the server -> apparently 5000 is in use by MacOS Monterey now
 app.listen(5001, () => {
