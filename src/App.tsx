@@ -11,6 +11,7 @@ import { HomeBanner } from './pages/home/components/HomeBanner';
 import { ArticleView } from './pages/article/ArticleView';
 import { Publish } from './pages/publish/Publish';
 import { NewArticle } from './pages/publish/NewArticle';
+import { DeleteArticle } from './pages/publish/DeleteArticle';
 
 export function App() {
   return (
@@ -73,6 +74,16 @@ export function App() {
             <>
               <Navbar />
               <NewArticle />
+            </>
+          } 
+        />
+
+        <Route 
+          path='/publish/delete' 
+          element={
+            <>
+              <Navbar />
+              <DeleteArticle />
             </>
           } 
         />

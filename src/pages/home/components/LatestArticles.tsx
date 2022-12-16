@@ -10,13 +10,14 @@ export interface ArticlesProps {
 export const LatestArticles: FC<ArticlesProps> = ({Articles}): JSX.Element => {
 
     return (
-        <div className=" flex justify-center flex-wrap mb-20 border-b-[1px] border-gray-200">
+        <div className=" flex flex-col mb-20">
             {
                 Articles.map( (article, i) => {
                     return (
-                        <div className="m-2" key={i}>
-                            <ArticleSnippet  article={article} />
-                        </div>
+                        <a href={`/blog/${article.id}`} className="mb-[8px] border-b-[1px] border-gray-200" key={i}>
+                            <h2 className=" font-bold"> <span>{i + 1}</span> - {article.title}</h2>
+                            <p className="text-sm">{new Date(article.publish_date).toLocaleDateString()}</p>
+                        </a>
                     )
                     
                 })
