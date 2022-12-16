@@ -24,23 +24,56 @@ export const DeleteArticle = () => {
 
     useEffect(() => {
         GetAllPosts();
-    })
+    }, [])
+
+
+    // sends the delete request to the server
+    const DeleteArticle = async (e: any) => {
+        try {
+
+            const response = await fetch(`${ServerInfo.DEV_DOMAIN}/delete/${e.target.value}`, {
+                method: "delete"
+            })
+
+            const returnedPosts = await response.json();
+            setAllPosts(returnedPosts);
+
+        } catch (e: any) {
+            console.error(e.message);
+        }
+    }
+
 
 
     return (
-        <div className=" px-1">
+        <div className=" px-2">
 
             <h1 className=" text-center mt-5 text-xl font-bold">Delete posts</h1>
 
-            <div className="relative top-12 border-[1px] border-gray-200 max-w-[1080px] mx-auto">
+            <div className="relative top-12 max-w-[1080px] mx-auto">
 
                 <div className=" flex flex-col">
                 {
                     allPosts.map((article, i) => {
                         return (
-                            <div key={i} className="px-5 flex my-1 mx-[8px] border-b-[1px] border-gray-200">
-                                <h1>{article.title}</h1>
-                                <p>{article.id}</p>
+                            <div key={i} className=" grid grid-cols-2 my-1 pb-2 border-b-[1px] border-gray-200">
+
+                                <div key={i} className=" flex justify-center items-center text-center">
+                                    <h1>{article.title}</h1>
+                                    {/* <p>{article.id}</p>     */}
+                                </div>
+
+                                <div className="flex justify-center items-center">
+                                    <button 
+                                        type="button" 
+                                        className=" text-white bg-[#f44336] border-gray-500 border-[1px] px-2 rounded"
+                                        value={article.id}
+                                        onClick={DeleteArticle}
+                                        >
+                                        Delete
+                                    </button>
+                                </div>
+
                             </div>
                         )
                     })
