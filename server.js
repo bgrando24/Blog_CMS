@@ -181,6 +181,6 @@ app.delete('/delete/:id', async (req, res) => {
 
 
 // launching the server -> apparently 5000 is in use by MacOS Monterey now
-app.listen(5001, () => {
+app.listen(process.env.PORT || 5001, () => {
     console.log("Server running on port 5001");
 });
