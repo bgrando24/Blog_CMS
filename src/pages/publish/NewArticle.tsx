@@ -1,4 +1,5 @@
 
+import { useNavigate } from "react-router-dom";
 import { ServerInfo } from "../../shared/ServerInfo";
 
 type ResponseMessage = {
@@ -7,7 +8,11 @@ type ResponseMessage = {
 
 export const NewArticle = () => {
 
+    const navigate = useNavigate();
+
     const HandleNewArticleSubmit = async (e: any) => {
+
+        e.preventDefault();
 
         await PostNewArticle({
             title: e.target.title.value, 
@@ -25,7 +30,7 @@ export const NewArticle = () => {
         // because it's async
         try {   
 
-            const response = await fetch(`${ServerInfo.DEV_DOMAIN}/new-article`, {
+            const response = await fetch(`${ServerInfo.PROD_DOMAIN}/new-article`, {
                 method: "POST", // HTTP method
                 headers: {"Content-Type": "application/json"},  // the type of data sent
                 body: JSON.stringify(NewArticleObject)  // converts object to JSON
@@ -33,7 +38,9 @@ export const NewArticle = () => {
 
             // checking it worked
             let responseMessage: ResponseMessage = await response.json();
-            console.log(responseMessage.status);
+            if (responseMessage.status === "ok") {
+                navigate("/blog");
+            }
 
         } catch (e: any) {
             console.error(e.message);

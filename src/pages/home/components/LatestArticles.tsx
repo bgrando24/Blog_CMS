@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { ArticleSnippet, ArticleType } from "../../../shared/ArticleSnippet";
+import { ArticleType } from "../../../shared/ArticleSnippet";
 
 export interface ArticlesProps {
     Articles: ArticleType[]

@@ -9,7 +9,7 @@ export const DeleteArticle = () => {
     const GetAllPosts = async () => {
         try {
 
-            const response = await fetch(`${ServerInfo.DEV_DOMAIN}/blog-posts`, {
+            const response = await fetch(`${ServerInfo.PROD_DOMAIN}/blog-posts`, {
                 method: "GET",
             });
 
@@ -31,7 +31,7 @@ export const DeleteArticle = () => {
     const DeleteArticle = async (e: any) => {
         try {
 
-            const response = await fetch(`${ServerInfo.DEV_DOMAIN}/delete/${e.target.value}`, {
+            const response = await fetch(`${ServerInfo.PROD_DOMAIN}/delete/${e.target.value}`, {
                 method: "delete"
             })
 

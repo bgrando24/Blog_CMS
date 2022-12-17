@@ -15,7 +15,7 @@ export function Home() {
     const CheckServerConnection = async () => {
         try {
 
-            const response = await fetch(`${ServerInfo.DEV_DOMAIN}/home-test`, {
+            const response = await fetch(`${ServerInfo.PROD_DOMAIN}/home-test`, {
                 method: "GET",
             });
 
@@ -32,7 +32,7 @@ export function Home() {
     const GetAllPosts = async () => {
         try {
 
-            const response = await fetch(`${ServerInfo.DEV_DOMAIN}/blog-posts`, {
+            const response = await fetch(`${ServerInfo.PROD_DOMAIN}/blog-posts`, {
                 method: "GET",
             });
 
@@ -47,7 +47,7 @@ export function Home() {
     const GetLatestPosts = async () => {
         try {
 
-            const response = await fetch(`${ServerInfo.DEV_DOMAIN}/latest-blog-posts`, {
+            const response = await fetch(`${ServerInfo.PROD_DOMAIN}/latest-blog-posts`, {
                 method: "GET",
             });
 

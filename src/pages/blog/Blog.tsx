@@ -11,7 +11,7 @@ export function Blog() {
     const GetAllPosts = async () => {
         try {
 
-            const response = await fetch(`${ServerInfo.DEV_DOMAIN}/blog-posts`, {
+            const response = await fetch(`${ServerInfo.PROD_DOMAIN}/blog-posts`, {
                 method: "GET",
             });
 
