@@ -84,6 +84,12 @@ app.post('/test-post', async (req, res) => {
 });
 
 
+// test route for AWS pipeline
+app.get('/aws', (req, res) => {
+    res.send("AWS pipeline is working!");
+})
+
+
 
 
 
