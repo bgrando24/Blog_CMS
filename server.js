@@ -4,6 +4,16 @@ const cors = require("cors");
 const pool = require("./DbConnection");
 
 
+// adding https
+// const https = require('https');
+// const fs = require('fs');
+
+// https.createServer(app)
+// .listen(process.env.PORT || 5001, () => {
+//     console.log("HTTPS Server running on port 5001");
+// });
+
+
 // authenitcation with passport -> https://www.youtube.com/watch?v=IUw_TgRhTBE
 const cookieParser = require('cookie-parser'); //For parsing cookies we use for session
 const bcrypt = require('bcryptjs'); //hashes the user passwords
@@ -190,3 +200,4 @@ app.delete('/delete/:id', async (req, res) => {
 app.listen(process.env.PORT || 5001, () => {
     console.log("Server running on port 5001");
 });
+
