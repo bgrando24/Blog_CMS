@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { ArticleSnippet } from '../../shared/ArticleSnippet';
 import { ServerInfo } from '../../shared/ServerInfo';
+import { Search } from './Search';
 
 
 export function Blog() {
@@ -37,7 +38,7 @@ export function Blog() {
         <div className=" flex flex-col items-center justify-between h-[70vh] max-w-[1080px] mx-auto">
 
             <div className="py-10">
-                <h1>Search</h1>
+                <Search />
             </div>
 
             <div className="py-10">

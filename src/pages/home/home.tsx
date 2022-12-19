@@ -74,13 +74,13 @@ export function Home() {
             </p>
 
             <div className=" py-10">
-                <h1 className=" text-lg">Trending Articles</h1>
+                <h1 className=" text-2xl">Trending Articles</h1>
             </div>
 
             <TrendingArticles Articles={allPosts} />
 
-            <div className=" py-10">
-                <h1 className=" text-lg">Latest Articles</h1>
+            <div className=" py-10 mt-20">
+                <h1 className=" text-2xl">Latest Articles</h1>
             </div>
 
             <LatestArticles Articles={latestPosts} />

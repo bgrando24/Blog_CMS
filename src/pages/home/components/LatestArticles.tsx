@@ -15,8 +15,19 @@ export const LatestArticles: FC<ArticlesProps> = ({Articles}): JSX.Element => {
                 Articles.map( (article, i) => {
                     return (
                         <a href={`/blog/${article.id}`} className="mb-[8px] border-b-[1px] border-gray-200" key={i}>
-                            <h2 className=" font-bold"> <span>{i + 1}</span> - {article.title}</h2>
-                            <p className="text-sm">{new Date(article.publish_date).toLocaleDateString()}</p>
+
+                            <div className=" flex">
+
+                                <span className=" mr-5 text-2xl text-accent">{i + 1}</span> 
+
+                                <div className=" flex flex-col items-center">
+                                    <h2 className=" font-bold">{article.title}</h2>
+                                    <p className=" text-sm">{new Date(article.publish_date).toLocaleDateString()}</p>
+                                </div>
+                                
+                            </div>
+                            
+
                         </a>
                     )
                     
