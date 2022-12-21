@@ -12,6 +12,8 @@ import { ArticleView } from './pages/article/ArticleView';
 import { Publish } from './pages/publish/Publish';
 import { NewArticle } from './pages/publish/NewArticle';
 import { DeleteArticle } from './pages/publish/DeleteArticle';
+import { EditArticlesPage } from './pages/publish/EditArticlesPage';
+import { EditArticle } from './pages/publish/EditArticle';
 
 export function App() {
   return (
@@ -86,6 +88,26 @@ export function App() {
               <DeleteArticle />
             </>
           } 
+        />
+
+        <Route
+          path='/publish/edit'
+          element={
+            <>
+              <Navbar />
+              <EditArticlesPage />
+            </>
+          }
+        />
+
+          <Route
+          path='/publish/edit/:id'
+          element={
+            <>
+              <Navbar />
+              <EditArticle />
+            </>
+          }
         />
         
         </Routes>

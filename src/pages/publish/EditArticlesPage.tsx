@@ -2,10 +2,13 @@ import { useEffect, useState } from "react";
 import { ArticleType } from "../../shared/ArticleSnippet";
 import { ServerInfo } from "../../shared/ServerInfo";
 
-export const DeleteArticle = () => {
 
+export const EditArticlesPage = () => {
+
+    // stores all the articles after the fetch request
     const [allPosts, setAllPosts] = useState<ArticleType[]>([]);
 
+    // fetches all posts from backend
     const GetAllPosts = async () => {
         try {
 
@@ -27,28 +30,10 @@ export const DeleteArticle = () => {
     }, [])
 
 
-    // sends the delete request to the server
-    const DeleteArticle = async (e: any) => {
-        try {
-
-            const response = await fetch(`${ServerInfo.PROD_DOMAIN}/delete/${e.target.value}`, {
-                method: "delete"
-            })
-
-            const returnedPosts = await response.json();
-            setAllPosts(returnedPosts);
-
-        } catch (e: any) {
-            console.error(e.message);
-        }
-    }
-
-
-
     return (
         <div className=" px-2">
 
-            <h1 className=" text-center mt-5 text-xl font-bold">Delete posts</h1>
+            <h1 className=" text-center mt-5 text-xl font-bold">Edit posts</h1>
 
             <div className="relative top-12 max-w-[1080px] mx-auto">
 
@@ -64,14 +49,13 @@ export const DeleteArticle = () => {
                                 </div>
 
                                 <div className="flex justify-center items-center">
-                                    <button 
+                                    <a 
                                         type="button" 
-                                        className=" text-white bg-warning border-gray-500 border-[1px] px-2 rounded"
-                                        value={article.id}
-                                        onClick={DeleteArticle}
+                                        className=" text-white bg-primary-alt border-gray-500 border-[1px] px-2 rounded"
+                                        href={`/publish/edit/${article.id}`}
                                         >
-                                        Delete
-                                    </button>
+                                        Edit
+                                    </a>
                                 </div>
 
                             </div>
