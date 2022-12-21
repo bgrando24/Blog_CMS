@@ -164,11 +164,28 @@ app.post('/article/:id', async (req, res) => {
 
         const articleQuery = await pool.query(`SELECT * FROM blog_posts WHERE id = '${req.params.id}'`);
         res.json(articleQuery.rows[0]); //send the result back
+        console.log("Article by ID pinged");
 
     } catch (e) {
         console.error(e.message);
     }
 });
+
+
+// update an article by it's ID
+app.put('/edit/:id', async (req, res) => {
+    try {
+
+        const {title, content, snippet, author} = req.body;
+        const putQuery = await pool.query(`UPDATE blog_posts SET title = '${title}', content = '${content}', snippet = '${snippet}', author ='${author}' WHERE id = ${req.params.id}`);
+
+        res.json({status: "ok"});
+
+    } catch (e) {
+        console.error(e.message);
+    }
+})
+
 
 
 // delete an article (row) by id
